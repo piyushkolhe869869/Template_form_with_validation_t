@@ -1,0 +1,86 @@
+<div class="maindiv">
+
+
+    <div class= "mainname">
+     Student Registration Form
+    </div>
+
+
+    <div form class ="form" [appPanverify]="['lastname','panno']">
+
+
+      <div class="divdata">
+      <label  class="label">firstname</label>
+      <input type="text" class="input" name="firstname" [(ngModel)]="stu.firstname" required maxlength="32">
+     
+
+      
+      </div>
+
+      <div class="divdata">
+        <label for="firstname" class="label">Middlename</label>
+        <input type="text" class="input" name="middlename" [(ngModel)]="stu.middelename" required maxlength="32">
+        </div>
+
+        <div class="divdata">
+          <label for="firstname" class="label">lastname</label>
+          <input type="text" class="input" [(ngModel)]="stu.lastname" required maxlength="32">
+          </div>
+
+          <div class="divdata">
+            <label for="firstname" class="label">Email</label>
+            <input type="email" class="input" [(ngModel)]="stu.email">
+            </div>
+
+            <div class="divdata">
+              <label for="firstname" class="label">Age</label>
+              <input type="number" class="input" [(ngModel)]="stu.age" required min="18" max="70" >
+              </div>
+
+          <div class="divdata">
+            <label>Gender</label>
+            <div class="gen">
+              <select class="sel" [(ngModel)]="stu.gender">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+                                                                                
+            <div class="divdata">
+              <label for="firstname" class="label">pincode</label>
+              <input type="tel" class="input" [(ngModel)]="stu.pincode" required maxlength="6"
+              pattern="[0-9]{6}">
+             
+              </div>
+             
+              <div class="divdata">
+              <label for="firstname" class="label">pancard</label>
+              <input type="text" class="input" [(ngModel)]="stu.panno"
+              >
+              </div>
+
+              <div class="divdata">
+                <label for="firstname" class="label">city</label>
+                <input type="text" class="input" [(ngModel)]="stu.city">
+                </div>
+
+             <div class="divdata">
+                <label class="label">Phone Number</label>
+                <input type="tel" class="input" [(ngModel)]="stu.mobno" required minlength="10" maxlength="10" >
+             </div> 
+
+
+            <div class="divdata">
+                <label>Address</label>
+                <textarea class="input" [(ngModel)]="stu.Address"></textarea>
+             </div> 
+
+             <div >
+              <button name="saveData" (click)="submit()" class="btn btn-success">save</button>
+            </div>
+          
+
+    </div>
+    </div>
