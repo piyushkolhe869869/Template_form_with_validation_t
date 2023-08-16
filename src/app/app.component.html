@@ -1,86 +1,101 @@
-<div class="maindiv">
+<div class="maindiv" xmlns="http://www.w3.org/1999/html">
 
 
-    <div class= "mainname">
-     Student Registration Form
+  <div class="mainname">
+    Student Registration Form
+  </div>
+
+
+  <form #register="ngForm" (ngSubmit)="register.form.valid && savedata()" class="form">
+
+
+    <div class="divdata">
+      <label class="label" >first name<span style="color: red">*</span></label>
+      <input type="text" class="input" name="firstname" placeholder="first name" [(ngModel)]="stu.firstname" #firstname="ngModel" required maxlength="32">
+
+          <div *ngIf="firstname.errors && firstname.touched">
+            <small class="text-danger" *ngIf="firstname.errors && firstname.touched">First Name is Required<span style="color:red">*</span></small>
+
+          </div>
     </div>
 
+    <div class="divdata">
+      <label class="label">Middle name<span style="color: red">*</span></label>
+      <input type="text" class="input" placeholder="Middle name" name="middlename" [(ngModel)]="stu.middelename" #middelename="ngModel" required maxlength="32">
+      <div *ngIf="middelename.errors && middelename.touched">
+        <small class="text-danger" *ngIf="middelename.errors && middelename.touched">Middle Name is Required<span style="color:red">*</span><span style="color:red">*</span></small>
 
-    <div form class ="form" [appPanverify]="['lastname','panno']">
+      </div>
+    </div>
 
+    <div class="divdata">
+      <label class="label">lastname</label>
+      <input type="text" class="input"  name="lastname" [(ngModel)]="stu.lastname"  #lastname="ngModel" required maxlength="32">
+      <div *ngIf="lastname.errors && lastname.touched">
+        <small class="text-danger" *ngIf="lastname.errors && lastname.touched">Last Name is Required<span style="color:red">*</span></small>
 
-      <div class="divdata">
-      <label  class="label">firstname</label>
-      <input type="text" class="input" name="firstname" [(ngModel)]="stu.firstname" required maxlength="32">
-     
+      </div>
+    </div>
 
-      
+    <div class="divdata">
+      <label class="label">Email</label>
+      <input type="email" class="input" name="email" #email="ngModel" [(ngModel)]="stu.email">
+    </div>
+
+    <div class="divdata">
+      <label class="label">Age</label>
+      <input type="number" class="input" name="age" #age="ngModel" [(ngModel)]="stu.age" required min="18" max="70">
+      <div *ngIf="age.errors && age.touched">
+        <small class="text-danger" *ngIf="age.errors && age.touched">Age Name is Required<span style="color:red">*</span></small>
+
+      </div>
+    </div>
+
+    <div class="divdata">
+      <label>Gender</label>
+      <div class="gen">
+        <select class="sel" name="gender" [(ngModel)]="stu.gender" #gender="ngModel">
+
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
       </div>
 
       <div class="divdata">
-        <label for="firstname" class="label">Middlename</label>
-        <input type="text" class="input" name="middlename" [(ngModel)]="stu.middelename" required maxlength="32">
+        <label class="label">pincode</label>
+        <input type="tel" class="input" name="pincode" [(ngModel)]="stu.pincode" required maxlength="6"
+               #pincode="ngModel" pattern="[0-9]{6}">
+
+      </div>
+
+      <div class="divdata">
+        <label class="label">pancard</label>
+        <input type="text" class="input" name="pancard" [(ngModel)]="stu.panno"
+        >
+      </div>
+
+      <div class="divdata">
+        <label class="label">city</label>
+        <input type="text" class="input" name="city" #city="ngModel" [(ngModel)]="stu.city">
+      </div>
+
+      <div class="divdata">
+        <label class="label">Phone Number</label>
+        <input type="tel" class="input" name="mobno" #mobno="ngModel" [(ngModel)]="stu.mobno" required minlength="10" maxlength="10">
+      </div>
+
+
+      <div class="divdata">
+        <label>Address</label>
+        <textarea class="input" name="Address" #Address="ngModel" [(ngModel)]="stu.Address"></textarea>
+      </div>
+
+      <div>
+        <button name="saveData" class="btn btn-success" >save</button>
+      </div>
+
+
+  </form>
         </div>
-
-        <div class="divdata">
-          <label for="firstname" class="label">lastname</label>
-          <input type="text" class="input" [(ngModel)]="stu.lastname" required maxlength="32">
-          </div>
-
-          <div class="divdata">
-            <label for="firstname" class="label">Email</label>
-            <input type="email" class="input" [(ngModel)]="stu.email">
-            </div>
-
-            <div class="divdata">
-              <label for="firstname" class="label">Age</label>
-              <input type="number" class="input" [(ngModel)]="stu.age" required min="18" max="70" >
-              </div>
-
-          <div class="divdata">
-            <label>Gender</label>
-            <div class="gen">
-              <select class="sel" [(ngModel)]="stu.gender">
-                <option value="">Select</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-                                                                                
-            <div class="divdata">
-              <label for="firstname" class="label">pincode</label>
-              <input type="tel" class="input" [(ngModel)]="stu.pincode" required maxlength="6"
-              pattern="[0-9]{6}">
-             
-              </div>
-             
-              <div class="divdata">
-              <label for="firstname" class="label">pancard</label>
-              <input type="text" class="input" [(ngModel)]="stu.panno"
-              >
-              </div>
-
-              <div class="divdata">
-                <label for="firstname" class="label">city</label>
-                <input type="text" class="input" [(ngModel)]="stu.city">
-                </div>
-
-             <div class="divdata">
-                <label class="label">Phone Number</label>
-                <input type="tel" class="input" [(ngModel)]="stu.mobno" required minlength="10" maxlength="10" >
-             </div> 
-
-
-            <div class="divdata">
-                <label>Address</label>
-                <textarea class="input" [(ngModel)]="stu.Address"></textarea>
-             </div> 
-
-             <div >
-              <button name="saveData" (click)="submit()" class="btn btn-success">save</button>
-            </div>
-          
-
-    </div>
-    </div>

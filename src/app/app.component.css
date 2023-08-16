@@ -38,7 +38,7 @@
    font-size: 14px;
  }
 
- 
+
 .maindiv .form .divdata .gen{
     position: relative;
     width: 200px;
@@ -49,7 +49,7 @@
     width: 440px;
     height: 30px;
   }
-  
+
 
 .maindiv .form .divdata .input{
   width: 100%;
@@ -58,10 +58,11 @@
   font-size: 15px;
   padding: 8px 10px;
   border-radius: 3px;
-  
+
 }
 
 .error{
   border: 1px solid red;
 }
+
 
