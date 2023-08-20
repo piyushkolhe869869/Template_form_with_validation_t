@@ -1,4 +1,4 @@
-<div class="maindiv" xmlns="http://www.w3.org/1999/html">
+<div class="maindiv" >
 
 
   <div class="mainname">
@@ -7,95 +7,134 @@
 
 
   <form #register="ngForm" (ngSubmit)="register.form.valid && savedata()" class="form">
-
+   
 
     <div class="divdata">
       <label class="label" >first name<span style="color: red">*</span></label>
-      <input type="text" class="input" name="firstname" placeholder="first name" [(ngModel)]="stu.firstname" #firstname="ngModel" required maxlength="32">
+      <input type="text" class="input" name="firstname" placeholder="first name" required [(ngModel)]="stu.firstname" #firstname="ngModel"  maxlength="32">
+ <div *ngIf="middelename.errors && middelename.touched">
+        <small class="alert alert-danger mt-3" *ngIf="middelename.errors && middelename.touched">First Name is required.<span style="color:red">*</span></small>
+</div>
+  </div>
 
-          <div *ngIf="firstname.errors && firstname.touched">
-            <small class="text-danger" *ngIf="firstname.errors && firstname.touched">First Name is Required<span style="color:red">*</span></small>
 
-          </div>
-    </div>
 
     <div class="divdata">
       <label class="label">Middle name<span style="color: red">*</span></label>
-      <input type="text" class="input" placeholder="Middle name" name="middlename" [(ngModel)]="stu.middelename" #middelename="ngModel" required maxlength="32">
-      <div *ngIf="middelename.errors && middelename.touched">
-        <small class="text-danger" *ngIf="middelename.errors && middelename.touched">Middle Name is Required<span style="color:red">*</span><span style="color:red">*</span></small>
-
-      </div>
+      <input type="text" class="input" placeholder="Middle name" name="middlename"  [(ngModel)]="stu.middelename" #middelename="ngModel" required maxlength="32">
+     <div *ngIf="middelename.errors && middelename.touched">
+        <small class="alert alert-danger mt-3" *ngIf="middelename.errors && middelename.touched">Middle Name is Required<span style="color:red">*</span></small>
+ </div>
     </div>
 
+
+
     <div class="divdata">
-      <label class="label">lastname</label>
-      <input type="text" class="input"  name="lastname" [(ngModel)]="stu.lastname"  #lastname="ngModel" required maxlength="32">
+      <label class="label">lastname<span style="color: red">*</span></label>
+      <input type="text" class="input"  name="lastname"  [(ngModel)]="stu.lastname" placeholder="Last name" #lastname="ngModel" required maxlength="32">
       <div *ngIf="lastname.errors && lastname.touched">
-        <small class="text-danger" *ngIf="lastname.errors && lastname.touched">Last Name is Required<span style="color:red">*</span></small>
-
-      </div>
+        <small class="alert alert-danger mt-3" *ngIf="lastname.errors && lastname.touched">Last Name is Required<span style="color:red">*</span></small>
+</div>
     </div>
 
-    <div class="divdata">
-      <label class="label">Email</label>
-      <input type="email" class="input" name="email" #email="ngModel" [(ngModel)]="stu.email">
-    </div>
+
 
     <div class="divdata">
-      <label class="label">Age</label>
-      <input type="number" class="input" name="age" #age="ngModel" [(ngModel)]="stu.age" required min="18" max="70">
+      <label class="label">Email<span style="color: red">*</span></label>
+      <input type="email" class="input" name="email" placeholder="email" #email="ngModel" required="email" [(ngModel)]="stu.email" [pattern]="emailRegExp">
+      <div *ngIf="email.errors && email.touched">
+        <small class="alert alert-danger mt-3" *ngIf="email.errors && email.touched">Valid email is Required<span style="color:red">*</span></small>
+          </div>
+
+
+
+    <div class="divdata">
+      <label class="label">Age<span style="color: red">*</span></label>
+      <input type="number" class="input" placeholder="Age" name="age" #age="ngModel" [(ngModel)]="stu.age" required min="18" max="70">
       <div *ngIf="age.errors && age.touched">
-        <small class="text-danger" *ngIf="age.errors && age.touched">Age Name is Required<span style="color:red">*</span></small>
+        <small class="alert alert-danger mt-3" *ngIf="age.errors && age.touched">Age Name is Required<span style="color:red">*</span></small>
 
       </div>
     </div>
+
 
     <div class="divdata">
       <label>Gender</label>
       <div class="gen">
-        <select class="sel" name="gender" [(ngModel)]="stu.gender" #gender="ngModel">
-
+        <select class="sel" name="gender" [(ngModel)]="stu.gender">
+          <option disabled value="1">Select Here</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
       </div>
       </div>
+              
+      <!-- <div class = "form-group">
+        <label for="funktion">Funktion</label>
+        <select  id="funktion" [(ngModel)]="stu.gender" class="form-control"  required >
+         <option *ngFor="let Funktion of " value="{{ }}">{{Funktion.Name}}</option>
+        </select>
+    </div>
+    <div *ngIf="stu.gender == 'Administrator' ">
+      Some Text here
+    </div> -->
+  
+        
 
       <div class="divdata">
-        <label class="label">pincode</label>
-        <input type="tel" class="input" name="pincode" [(ngModel)]="stu.pincode" required maxlength="6"
+        <label class="label">pincode<span style="color: red">*</span></label>
+        <input type="tel" class="input" name="pincode" placeholder="Pin Code" [(ngModel)]="stu.pincode" required maxlength="6"
                #pincode="ngModel" pattern="[0-9]{6}">
-
+               <div *ngIf="lastname.errors && lastname.touched">
+                <small class="alert alert-danger mt-3" *ngIf="lastname.errors && lastname.touched">Pincode is Required<span style="color:red">*</span></small>
+        </div>
       </div>
 
       <div class="divdata">
         <label class="label">pancard</label>
-        <input type="text" class="input" name="pancard" [(ngModel)]="stu.panno"
+        <input type="text" class="input" name="pancard" placeholder="Pancard" [(ngModel)]="stu.panno"
         >
       </div>
 
-      <div class="divdata">
-        <label class="label">city</label>
-        <input type="text" class="input" name="city" #city="ngModel" [(ngModel)]="stu.city">
-      </div>
-
-      <div class="divdata">
-        <label class="label">Phone Number</label>
-        <input type="tel" class="input" name="mobno" #mobno="ngModel" [(ngModel)]="stu.mobno" required minlength="10" maxlength="10">
-      </div>
 
 
       <div class="divdata">
-        <label>Address</label>
-        <textarea class="input" name="Address" #Address="ngModel" [(ngModel)]="stu.Address"></textarea>
+        <label class="label">city <span style="color: red">*</span></label>
+        <input type="text" class="input" name="city" placeholder="City" #city="ngModel" required [(ngModel)]="stu.city">
+        <div *ngIf="lastname.errors && lastname.touched">
+          <small class="alert alert-danger mt-3" *ngIf="lastname.errors && lastname.touched">City is Required<span style="color:red">*</span></small>
+  
+        </div>
       </div>
+
+
+
+      <div class="divdata">
+        <label class="label">Phone Number <span style="color: red">*</span></label>
+        <input type="tel" class="input" placeholder="Phone Number" name="mobno" #mobno="ngModel" required [(ngModel)]="stu.mobno" required minlength="10" maxlength="10">
+        <div *ngIf="lastname.errors && lastname.touched">
+          <small class="alert alert-danger mt-3" *ngIf="lastname.errors && lastname.touched">Mobile number is Required<span style="color:red">*</span></small> <br>
+          <small class="alert alert-danger mt-3" *ngIf="lastname.errors && lastname.touched">Mobile number must be ten digit<span style="color:red">*</span></small>
+        </div>
+      </div>
+
+
+
+
+      <div class="divdata">
+        <label>Address<span style="color: red">*</span></label>
+        <textarea class="input" name="Address" placeholder="Address" #Address="ngModel" required  [(ngModel)]="stu.Address"></textarea>
+      </div>
+
+
 
       <div>
-        <button name="saveData" class="btn btn-success" >save</button>
+        <button name="saveData" class="btn btn-primary" [disabled]="register.invalid">save</button>
       </div>
+    
+</div>
+</form>
 
 
-  </form>
-        </div>
+  

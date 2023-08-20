@@ -3,6 +3,7 @@ import { ServicesService } from './commaon/services.service';
 import { Student } from './student';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,16 +11,21 @@ import { Student } from './student';
 })
 export class AppComponent  {
   title = 'Studentform';
+ 
+
+
 
    constructor(public cs:ServicesService){}
 
 
-   stu = new Student();
+   emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  
 
-
-
-
-  savedata(){
+    
+    stu =new Student();
+savedata(){
     this.cs.savestu(this.stu).subscribe()
-  }
+   }
 }
+
+
